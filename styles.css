@@ -1,33 +1,36 @@
 @import url("reset.css");
 
 :root {
-    --color-bg: #f9f6f1;
+    --color-light: #f9f6f1;
+    --color-light-muted: #e2e8f0;
     --color-surface: #ffffff;
 
-    --color-ink: #1a1a1a;
-    --color-muted: #616161;
-    --color-link: #f9f6f1;
+    --color-dark: #333333;
+    --color-dark-muted: #616161;
 
     --color-border: #e5e0d8;
 
-    --color-accent: #d0ecf8;
-    --color-accent-dark: #99b4c0;
+    --color-accent: #d7f3ff;
+    --color-accent-dark: #a5c8f0;
+    --color-accent-darker: #6f92b8;
 
-    --font-heading: "Playfair Display", Georgia, serif;
-    --font-body: "Roboto", sans-serif;
+    --font-heading: "Chivo", Arial, sans-serif;
+    --font-body: "Roboto", Arial, sans-serif;
 
+    --font-size-xl: 2rem;
     --font-size-lg: 1.25rem;
     --font-size-md: 1rem;
     --font-size-sm: 0.75rem;
 
     --radius: 10px;
     --shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
-    --container-max-width: 900px;
+    --container-max-width: 750px;
 
+    --spacing-xl: 4em;
     --spacing-lg: 2em;
     --spacing-md: 1.5em;
     --spacing-sm: 0.75em;
-    --spacing-xs: 0.25em;
+    --spacing-xs: 0.35em;
 
     --border-md: 4px;
 
@@ -36,22 +39,44 @@
 
 body {
     font-family: var(--font-body);
-    background-color: var(--color-bg);
-    color: var(--color-ink);
+    background-color: var(--color-light);
+    color: var(--color-dark);
 
     font-size: var(--font-size-md);
 }
 
 a {
-    color: var(--color-link);
+    color: var(--color-light-muted);
     text-decoration: none;
 }
+
+.container {
+    max-width: var(--container-max-width);
+
+    margin-inline: auto;
+    padding-inline: var(--spacing-md);
+}
+
+section {
+    padding-block: var(--spacing-md);
+}
+
+.section-heading {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-lg);
+    font-weight: bold;
+    margin-bottom: var(--spacing-sm);
+}
+
+/*==============================================================================
+    Navigation
+==============================================================================*/
 
 nav {
     position: sticky;
     top: 0;
     z-index: var(--z-index-always-on-top);
-    background-color: var(--color-accent-dark);
+    background-color: var(--color-accent-darker);
     border-bottom: var(--border-md) solid var(--color-border);
     width: 100%;
 
@@ -63,22 +88,17 @@ nav {
     }
 }
 
-.container {
-    max-width: var(--container-max-width);
-
-    margin-inline: auto;
-    padding-inline: var(--spacing-md);
-}
-
-section {
-    padding-block: var(--spacing-lg)
-}
-
 .nav-logo {
     font-family: var(--font-heading);
     font-size: var(--font-size-lg);
     font-weight: bold;
-    color: var(--color-ink);
+    color: var(--color-light-muted);
+
+    transition: color 0.2s;
+
+    &:hover {
+        color: var(--color-light);
+    }
 }
 
 .nav-links {
@@ -91,50 +111,153 @@ section {
         font-weight: bold;
 
         &:hover {
-            color: var(--color-ink);
-            text-decoration: none;
+            color: var(--color-light);
         }
     }
 }
 
+/*==============================================================================
+    Hero
+==============================================================================*/
+
 #hero {
     background-color: var(--color-accent);
     width: 100%;
-    padding-block: var(--spacing-lg);
+    padding-block: var(--spacing-xl);
+}
+
+#hero .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.hero-content {
+    flex: 1;
 }
 
 .hero-eyebrow {
     font-size: var(--font-size-sm);
-    color: var(--color-muted);
+    color: var(--color-dark-muted);
     letter-spacing: 0.05em;
     margin-bottom: var(--spacing-sm);
 }
 
 .hero-title {
     font-family: var(--font-heading);
-    color: var(--color-ink);
+    color: var(--color-dark);
     margin-bottom: var(--spacing-xs);
 }
 
 .hero-description {
-    color: var(--color-muted);
+    color: var(--color-dark-muted);
     max-width: calc(0.5 * var(--container-max-width));
 }
 
 .hero-portrait {
+    flex-shrink: 0;
     width: 150px;
     aspect-ratio: 1;
     border-radius: 50%;
     object-fit: cover;
-    border: var(--border-md) solid var(--color-accent-dark);
+    border: var(--border-md) solid var(--color-accent-darker);
+    box-shadow: var(--shadow);
+}
+
+/*==============================================================================
+    About
+==============================================================================*/
+
+.about-text {
+    margin-bottom: var(--spacing-sm);
+}
+
+.contacts {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.contact-icon {
+    font-size: var(--font-size-xl);
+    color: var(--color-accent-dark);
+
+    transition: color 0.2s;
+
+    &:hover {
+        color: var(--color-accent-darker);
+    }
+}
+
+/*==============================================================================
+    Skills
+==============================================================================*/
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: var(--spacing-sm);
+    margin-block: var(--spacing-sm);
+}
+
+.skill-card {
+    padding: var(--spacing-sm);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background-color: var(--color-surface);
+
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.skill-icon {
+    font-size: var(--font-size-lg);
+    color: var(--color-accent-darker);
+}
+
+.skill-name {
+    font-size: var(--font-size-sm);
+    font-weight: bold;
+    color: var(--color-dark-muted);
+}
+
+/*==============================================================================
+    Projects
+==============================================================================*/
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+    place-items: center;
+}
+
+.project-card {
+    padding: var(--spacing-sm);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background-color: var(--color-surface);
+    width: 100%;
+}
+
+.project-name {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.project-description {
+    font-size: var(--font-size-sm);
 }
 
 footer {
-    background-color: var(--color-accent-dark);
-    color: var(--color-ink);
+    background-color: var(--color-accent-darker);
+    color: var(--color-light);
     font-size: var(--font-size-sm);
 
     border-top: var(--border-md) solid var(--color-border);
-    padding-block: var(--spacing-sm);
+    padding-block: var(--spacing-md);
+    margin-top: var(--spacing-md);
     text-align: center;
 }
