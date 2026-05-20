@@ -18,13 +18,14 @@
     --font-body: "Roboto", Arial, sans-serif;
 
     --font-size-xl: 2rem;
+    --font-size-lgr: 1.5rem;
     --font-size-lg: 1.25rem;
     --font-size-md: 1rem;
     --font-size-sm: 0.75rem;
 
     --radius: 10px;
     --shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
-    --container-max-width: 750px;
+    --container-max-width: 700px;
 
     --spacing-xl: 4em;
     --spacing-lg: 2em;
@@ -58,14 +59,14 @@ a {
 }
 
 section {
-    padding-block: var(--spacing-md);
+    padding-block-end: var(--spacing-md);
 }
 
 .section-heading {
     font-family: var(--font-heading);
     font-size: var(--font-size-lg);
     font-weight: bold;
-    margin-bottom: var(--spacing-sm);
+    margin-block-end: var(--spacing-sm);
 }
 
 /*==============================================================================
@@ -77,7 +78,7 @@ nav {
     top: 0;
     z-index: var(--z-index-always-on-top);
     background-color: var(--color-accent-darker);
-    border-bottom: var(--border-md) solid var(--color-border);
+    border-block-end: var(--border-md) solid var(--color-border);
     width: 100%;
 
     .container {
@@ -124,6 +125,7 @@ nav {
     background-color: var(--color-accent);
     width: 100%;
     padding-block: var(--spacing-xl);
+    margin-block-end: var(--spacing-lg);
 }
 
 #hero .container {
@@ -141,13 +143,13 @@ nav {
     font-size: var(--font-size-sm);
     color: var(--color-dark-muted);
     letter-spacing: 0.05em;
-    margin-bottom: var(--spacing-sm);
+    margin-block-end: var(--spacing-sm);
 }
 
 .hero-title {
     font-family: var(--font-heading);
     color: var(--color-dark);
-    margin-bottom: var(--spacing-xs);
+    margin-block-end: var(--spacing-xs);
 }
 
 .hero-description {
@@ -170,7 +172,7 @@ nav {
 ==============================================================================*/
 
 .about-text {
-    margin-bottom: var(--spacing-sm);
+    margin-block-end: var(--spacing-sm);
 }
 
 .contacts {
@@ -209,7 +211,8 @@ nav {
 
     display: flex;
     align-items: center;
-    gap: var(--spacing-sm);
+
+    gap: var(--spacing-xs);
 }
 
 .skill-icon {
@@ -230,8 +233,7 @@ nav {
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-sm);
-    place-items: center;
+    gap: var(--spacing-md);
 }
 
 .project-card {
@@ -242,9 +244,25 @@ nav {
     width: 100%;
 }
 
+.project-header {
+    display: flex;
+    justify-content: space-between;
+}
+
 .project-name {
     font-size: var(--font-size-md);
-    margin-bottom: var(--spacing-sm);
+    margin-block-end: var(--spacing-sm);
+}
+
+.project-link-icon {
+    font-size: var(--font-size-lgr);
+    color: var(--color-accent-dark);
+
+    transition: color 0.2s;
+
+    &:hover {
+        color: var(--color-accent-darker);
+    }
 }
 
 .project-description {
@@ -256,8 +274,8 @@ footer {
     color: var(--color-light);
     font-size: var(--font-size-sm);
 
-    border-top: var(--border-md) solid var(--color-border);
+    border-block-start: var(--border-md) solid var(--color-border);
     padding-block: var(--spacing-md);
-    margin-top: var(--spacing-md);
+    margin-block-start: var(--spacing-md);
     text-align: center;
 }
